@@ -1,0 +1,45 @@
+@php
+@endphp
+
+@extends('layouts.app')
+
+@section('content')
+    
+    {{--sezione banda blu--}}
+    <section class="band_product container-fluid">
+        <div class="row band_product">
+            <div class="col-12 mt-5">
+                <h2 class="text-center">Tutti i Progetti della tipologia: {{ $type->name }}</h2>
+            </div>
+        </div>
+    </section>
+    
+    <section class="title_product container-fluid">
+        <div class="row justify-content-center d-flex ">
+            <div class="col-5 p-4 mt-5 text-center">
+                <a href="{{ route('admin.types.index') }}" class="btn btn-info btn-sm mb-2">Elenco delle Tipologie</a>
+                <h6 class="mt-3">SLUG: {{ $type->slug }} </h6>
+                <h6>Tipologia: <span class="badge text-bg-info">{{ $type->name }}</span></h6>
+            </div>
+        </div>
+    </section>
+
+    <section class=" container">
+        <div class="row justify-content-center">
+        @foreach ($type->projects as $project)
+            <div class="card col-12 col-md-4 m-3 text-white border border-secondary" style="width: 25rem; " >
+                <div class="text-end mt-1"><span class="badge text-bg-info">{{ $project->type->name }}</span></div>
+                <img src="{{ asset('storage/'.$project->thumb) }}" class="card-img-top mt-3" alt="{{ $project->title }}">
+                <div class="card-body">
+                    <h5 class="card-title text-black">{{ $project->title }}</h5>
+                    <a href="{{ $project->github }}" target="_blank" class="btn btn-primary">GitHub</a>
+                    <a href="{{ $project->demo }}" target="_blank" class="btn btn-secondary">Demo</a>
+                    
+                </div>
+            </div>
+         @endforeach 
+        </div>
+    </section>
+
+    @include('admin.partials.modal_delete')
+@endsection
