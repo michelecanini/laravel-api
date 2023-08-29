@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', function () {
+    $projects = Project::all();
     return response()->json([
-        'name' => 'Michele',
-        'surname' => 'Canini'
+        'success' => true,
+        'result' => $projects
     ]);
 });
