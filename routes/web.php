@@ -23,11 +23,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-//GESTIONE INIZIALE DELLA ROTTA
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-
 //GESTIONE ROTTA CON IL NUOVO CONTROLLER (admin)
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -45,4 +40,3 @@ Route::middleware('auth')->group(function () {
 Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index']);
 
 require __DIR__.'/auth.php';
-
