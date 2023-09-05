@@ -35,7 +35,6 @@ class ProjectController extends Controller
                 'results' => $project
     
             ]);
-
         }
         else{
 
@@ -45,9 +44,6 @@ class ProjectController extends Controller
                 'error' => 'Non è stato trovato alcun Progetto.'
     
             ]);
-
         }
-
-        
     }
 }
