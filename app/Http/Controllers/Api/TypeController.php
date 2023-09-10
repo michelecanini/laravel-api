@@ -18,4 +18,26 @@ class TypeController extends Controller
 
         ]);
     }
+
+    public function show($slug)
+    {
+        $types = Type::with( 'projects')->where('slug', $slug)->first(); 
+
+        if ($types) {
+            return response()->json([
+
+                'success' => true,
+                'types' => $types
+
+            ]);
+        }
+        else{
+            return response()->json([
+
+                'success' => false,
+                'message' => 'Categoria non trovata'
+
+            ]);
+        }
+    }
 }
