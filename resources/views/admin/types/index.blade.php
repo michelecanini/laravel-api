@@ -47,5 +47,5 @@
         </div>
     </section>
     
-    @include('admin.partials.modal_delete')
+    @include('admin.partials.type_modal_delete')
 @endsection

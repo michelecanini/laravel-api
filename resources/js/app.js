@@ -5,7 +5,7 @@ import.meta.glob([
     '../img/**'
 ])
 
-//costante di tutti i pulsanti di cancellazione
+//costante di tutti i pulsanti di cancellazione progetti
 const deleteSubmitButton = document.querySelectorAll('.delete-project-form button[type="submit"]');
 
 //ciclo di tutti i pulsanti di cancellazione
@@ -35,6 +35,38 @@ deleteSubmitButton.forEach((button) =>{
         });
     })
 });
+
+// Costante di tutti i pulsanti di cancellazione tipologie
+const deleteTypeButtons = document.querySelectorAll('.delete-type-form button[type="submit"]');
+
+// Ciclo di tutti i pulsanti di cancellazione
+deleteTypeButtons.forEach((button) => {
+
+    // Tutti i pulsanti attendono l'evento click
+    button.addEventListener('click', (event) => {
+
+        // No sottomissione form
+        event.preventDefault();
+
+        // Recupero dell'HTML della modale
+        const modal = document.getElementById('confirmTypeDelete');
+
+        // Istanza classe modal di Bootstrap
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
+
+        // Recupero del pulsante di cancellazione
+        const buttonDelete = document.querySelector('.confirm-delete-button');
+
+        // In attesa dell'evento click
+        buttonDelete.addEventListener('click', () => {
+
+            // Sottomissione form
+            button.parentElement.submit();
+        });
+    })
+});
+
 
 
 /*!
