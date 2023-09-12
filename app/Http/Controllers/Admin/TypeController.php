@@ -69,7 +69,8 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $types = Type::all();
+        return view('admin.types.edit', compact('type', 'types'));
     }
 
     /**
@@ -81,7 +82,13 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $type->name = $request->name;
+        $newSlug = $type->generateSlug($request->name);
+        $type->slug = $newSlug;
+        
+        $type->save();
+    
+        return redirect()->route('admin.types.index');
     }
 
     /**
