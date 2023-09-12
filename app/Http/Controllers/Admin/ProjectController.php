@@ -93,7 +93,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -119,8 +120,13 @@ class ProjectController extends Controller
         $form_data['slug'] = $project->generateSlug($form_data['title']);
         $project->update($form_data);
 
+        if($request->has('technologies')){
+            $project->technologies()->sync($request->technologies);
+        }
+
         return redirect()->route('admin.projects.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

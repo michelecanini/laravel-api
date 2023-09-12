@@ -58,6 +58,15 @@
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
+                        <p>Seleziona le Tecnologie</p>
+                        @foreach($technologies as $technology)
+                            <div class="form-check form-switch form-check-inline col-2">
+                                <input class="form-check-input" name="technologies[]" type="checkbox" role="switch" id="flexSwitchCheckDefault{{ $technology->id }}" value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="flexSwitchCheckDefault{{ $technology->id }}">{{ $technology->name }}</label>  
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Repo GitHub</label>
                         <div class="col-sm-10">
                             <input type="text"  class="form-control" id="github" name="github" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('github') ?? $project->github }}">
