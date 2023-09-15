@@ -1,4 +1,5 @@
 @php
+    $counter = 1;
 @endphp
 
 @extends('layouts.admin')
@@ -16,7 +17,8 @@
                 <table class="table">
                     <thead class="text-center">
                         <tr>
-                            <th>ID</th>
+                            {{-- <th>ID</th> --}}
+                            <th>N.</th>
                             <th>Titolo</th>
                             <th>Immagine</th>
                             <th>Descrizione</th>
@@ -29,7 +31,8 @@
                      <tbody class="text-center">
                         @foreach ($projects as $project)
                             <tr class="align-middle">
-                                <td>{{ $project->id }}</td>
+                                {{-- <td>{{ $project->id }}</td> --}}
+                                <td>{{ $counter++ }}</td>
                                 <td>{{ $project->title }}</td>
                                 <td>
                                     @if(!empty($project->thumb))
