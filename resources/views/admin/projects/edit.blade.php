@@ -28,7 +28,7 @@
                     <div class="row mb-3 mt-5 form-group">
                         <label class="col-sm-2 col-form-label control-label">Titolo</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" id="title" name="title" placeholder="Inserisci qui il Titolo" value="{{ old('title') ?? $project->title }}">
+                            <input type="text"  class="form-control" id="title" name="title" placeholder="Inserisci qui il Titolo" value="{{ old('title') ?? $project->title }}" required>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
@@ -43,13 +43,13 @@
                         </div>
                         <label class="col-sm-2 col-form-label control-label">Immagine</label>
                         <div class="col-sm-10">
-                            <input type="file"  class="form-control" id="thumb" name="thumb">
+                            <input type="file"  class="form-control" id="thumb" name="thumb" required>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Tipologia Progetto</label>
                         <div class="col-sm-10">
-                            <select class="form-control" @error('type_id')is_invalid @enderror id="type_id" name="type_id">
+                            <select class="form-control" @error('type_id')is_invalid @enderror id="type_id" name="type_id" required>
                                 <option value="">Seleziona Tipologia Progetto</option>
                                 @foreach($types as $type)
                                     <option {{ $type->id == old('type_id', $project->type_id) ? 'selected' : '' }} value="{{ $type->id }}">{{ $type->name }}</option>
@@ -61,7 +61,7 @@
                         <p>Seleziona le Tecnologie</p>
                         @foreach($technologies as $technology)
                             <div class="form-check form-switch form-check-inline col-2">
-                                <input class="form-check-input" name="technologies[]" type="checkbox" role="switch" id="flexSwitchCheckDefault{{ $technology->id }}" value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                                <input class="form-check-input" name="technologies[]" type="checkbox" role="switch" id="flexSwitchCheckDefault{{ $technology->id }}" value="{{ $technology->id }}" {{ $project->technologies->contains($technology->id) ? 'checked' : '' }} required>
                                 <label class="form-check-label" for="flexSwitchCheckDefault{{ $technology->id }}">{{ $technology->name }}</label>  
                             </div>
                         @endforeach
@@ -69,13 +69,13 @@
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Repo GitHub</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" id="github" name="github" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('github') ?? $project->github }}">
+                            <input type="text"  class="form-control" id="github" name="github" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('github') ?? $project->github }}" required>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Demo</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" id="demo" name="demo" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('demo') ?? $project->demo }}">
+                            <input type="text"  class="form-control" id="demo" name="demo" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('demo') ?? $project->demo }}" required>
                         </div>
                     </div>
                     <div class="text-center mt-5">
