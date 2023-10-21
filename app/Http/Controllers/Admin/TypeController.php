@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Http\Request;
+
 
 class TypeController extends Controller
 {
@@ -46,7 +48,9 @@ class TypeController extends Controller
         
         $type->save();
 
-    return redirect()->route('admin.types.index');
+        $request->session()->flash('success', 'Tipologia creata con successo!');
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -87,6 +91,8 @@ class TypeController extends Controller
         
         $type->save();
     
+        $request->session()->flash('success', 'Tipologia modificata con successo!');
+
         return redirect()->route('admin.types.index');
     }
 
@@ -96,9 +102,12 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Request $request, Type $type)
     {
         $type->delete();
+
+        $request->session()->flash('success', 'Tipologia cancellata con successo!');
+
         return redirect()->route('admin.types.index');
     }
 }

@@ -26,14 +26,14 @@
                  <p class="mt-5"><strong>Descrizione:</strong> {{ $project->description }}</p>
                 <p><strong>Link GitHub:</strong> {{ $project->github }}</p>
                 <p><strong>Link Demo:</strong> {{ $project->demo }}</p>
-                <a href="{{ $project->github }}" class="btn btn-primary btn-sm p-1 mb-2">Vai su Github</a>
-                <a href="{{ $project->demo }}" class="btn btn-secondary btn-sm mb-2">Vai alla Demo</a>
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-info btn-sm mb-2">Elenco Progetti</a>
-                <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning btn-sm mb-2">Modifica</a>
+                <a href="{{ $project->github }}" class="btn btn-primary mb-2">Vai su Github</a>
+                <a href="{{ $project->demo }}" class="btn btn-secondary mb-2">Vai alla Demo</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-info mb-2">Elenco Progetti</a>
+                <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning mb-2">Modifica</a>
                 <form class='d-inline-block delete-project-form' action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm mb-2" type="submit">Cancella</button>
+                    <button class="btn btn-danger mb-2" type="submit">Cancella</button>
                 </form>
 
                 
