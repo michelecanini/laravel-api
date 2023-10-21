@@ -29,7 +29,7 @@
                                 <td>{{ $technology->name }}</td>
                                 <td>{{ $technology->slug }}</td>
                                 <td width="200">
-                                    <a href="{{ route('admin.technologies.edit', $technology->id) }}" class="btn btn-info btn-sm"><i class="fa-regular fa-eye"></i> progetti</a>
+                                    <a href="{{ route('admin.technologies.show', $technology->id) }}" class="btn btn-info btn-sm"><i class="fa-regular fa-eye"></i> progetti</a>
                                     <a href="{{ route('admin.technologies.edit', $technology->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                                     <form class='d-inline-block delete-technology-form' action="{{ route('admin.technologies.destroy', $technology->id) }}" method="POST">
                                         @csrf
