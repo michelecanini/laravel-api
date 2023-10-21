@@ -21,7 +21,7 @@
                             <th>N.</th>
                             <th>Titolo</th>
                             <th>Immagine</th>
-                            <th>Descrizione</th>
+                            {{-- <th>Descrizione</th> --}}
                             <th>Repo GitHub</th>
                             <th>Demo</th>
                             <th>Slug</th>
@@ -36,14 +36,14 @@
                                 <td>{{ $project->title }}</td>
                                 <td>
                                     @if(!empty($project->thumb))
-                                        <img src="{{ asset('storage/'.$project->thumb) }}" class="image" style="width: 180px; height: 90px;">
+                                        <img src="{{ asset('storage/'.$project->thumb) }}" class="image" style="width: 160px; height: 70px;">
                                     @else
                                         <h5>Cover non disponibile</h5>
                                     @endif
                                 </td>
-                                <td>{{ $project->description }}</td>
-                                <td>{{ $project->github }}</td>
-                                <td>{{ $project->demo }}</td>
+                                {{-- <td>{{ $project->description }}</td> --}}
+                                <td><a href="{{ $project->github }}" class="btn btn-primary btn-sm p-1 mb-2">Vai su Github</a></td>
+                                <td><a href="{{ $project->demo }}" class="btn btn-secondary btn-sm mb-2">Vai alla Demo</a></td>
                                 <td>{{ $project->slug }}</td>
                                 <td width="200">
                                     <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-info btn-sm"><i class="fa-regular fa-eye"></i></a>
