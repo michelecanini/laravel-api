@@ -5,7 +5,7 @@
 
 @section('content')
     
-    {{--sezione banda blu--}}
+    {{--sezione title--}}
     <section class="band_product container-fluid">
         <div class="row band_product">
             <div class="col-12 mt-5">
