@@ -33,8 +33,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-black">{{ $project->title }}</h5>
                     <a href="{{ $project->github }}" target="_blank" class="btn btn-primary">GitHub</a>
-                    <a href="{{ $project->demo }}" target="_blank" class="btn btn-secondary">Demo</a>
-                    
+                    <a href="{{ $project->demo }}" target="_blank" class="btn btn-secondary">Demo</a>     
                 </div>
             </div>
          @endforeach 
