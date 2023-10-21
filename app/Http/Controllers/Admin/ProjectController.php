@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
@@ -69,6 +70,8 @@ class ProjectController extends Controller
             $project->technologies()->attach($request->technologies);
         }
         
+        $request->session()->flash('success', 'Progetto creato con successo!');
+
         return redirect()->route('admin.projects.index');
         
     }
@@ -124,6 +127,8 @@ class ProjectController extends Controller
             $project->technologies()->sync($request->technologies);
         }
 
+        $request->session()->flash('success', 'Progetto modificato con successo!');
+
         return redirect()->route('admin.projects.index');
     }
 
@@ -134,10 +139,12 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Request $request, Project $project)
     {
         $project->technologies()->detach();
         $project->delete();
+
+        $request->session()->flash('success', 'Progetto cancellato con successo!');
 
         return redirect()->route('admin.projects.index');
     }

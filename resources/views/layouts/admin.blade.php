@@ -20,6 +20,7 @@
     </head>
 
     <body>
+
         <div id="app">
 
             <nav class="navbar navbar-expand-md navbar-light shadow-sm navbar-sticky-top">
@@ -46,12 +47,12 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                    {{-- <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/') }}">{{ __('Home') }}</a>
-                            </li>
-                        </ul> --}}
+                        
+                        @if (session('success'))
+                            <div class="alert alert-success" onclick="this.style.display='none';" style="position: absolute; top: 0%; left: 50%; transform: translateX(-50%);">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -89,6 +90,7 @@
                     </div>
                 </div>
             </nav>
+
 
                 <!--START MAIN-->
                 <main >
