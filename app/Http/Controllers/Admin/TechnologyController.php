@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
+use Illuminate\Http\Request;
 
 class TechnologyController extends Controller
 {
@@ -45,6 +46,8 @@ class TechnologyController extends Controller
         $technology->slug = $newSlug;
         
         $technology->save();
+
+        $request->session()->flash('success', 'Tecnologia creata con successo!');
 
         return redirect()->route('admin.technologies.index');
     }
@@ -87,6 +90,8 @@ class TechnologyController extends Controller
 
         $technology->save();
 
+        $request->session()->flash('success', 'Tecnologia modificata con successo!');
+
         return redirect()->route('admin.technologies.index');
     }
 
@@ -96,9 +101,12 @@ class TechnologyController extends Controller
      * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Technology $technology)
+    public function destroy(Request $request, Technology $technology)
     {
         $technology->delete();
+
+        $request->session()->flash('success', 'Tecnologia cancellata con successo!');
+
         return redirect()->route('admin.technologies.index');
     }
 }
