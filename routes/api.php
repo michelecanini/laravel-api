@@ -25,4 +25,6 @@ Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{slug}', [ProjectController::class, 'show']);
 Route::get('/types', [TypeController::class, 'index']);
 Route::get('/types/{slug}', [TypeController::class, 'show']);
+Route::get('/technologies', [TechnologyController::class, 'index']);
+Route::get('/technologies/{slug}', [TechnologyController::class, 'show']);
 Route::post('/contacts', [LeadController::class, 'store']);
