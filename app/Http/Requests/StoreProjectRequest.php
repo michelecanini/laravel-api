@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'thumb' => 'image',
-            'github' => 'required|max:255',
+            //'github' => 'required|max:255', //non richiesto in caso di progetti privati
             'type_id' => 'required|exists:types,id',
             'technology_id' => 'exists:technologies,id'
         ];
@@ -38,11 +38,11 @@ class StoreProjectRequest extends FormRequest
             'title.required' => 'Il titolo è obbligatorio',
             'title.max' => 'Il titolo deve essere lungo massimo :max caratteri',
             'thumb.image' => "il file allegato deve essere di tipo immagine (jpg, png...)",
-            'github.required' => "l'url della reposity github è obbligatoria",
-            'github.max' => "l'url della reposity github deve essere lunga massimo :max caratteri",
+            //'github.required' => "l'url della reposity github è obbligatoria",
+            //'github.max' => "l'url della reposity github deve essere lunga massimo :max caratteri",
             'type_id.required' => "devi selezionare una tipologia di progetto",
             'type_id.exists' => "la categoria da te selezionata non è valida",
-            'technology_id.exists' => "la tipologia da te selezionata non è valida"
+            'technology_id.exists' => "la tipologia da te selezionata non è valida",
         ];
     }
 }

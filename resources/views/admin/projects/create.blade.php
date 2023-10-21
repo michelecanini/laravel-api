@@ -32,13 +32,13 @@
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Descrizione</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="description" name="description" placeholder="Inserisci qui la Descrizione" required>{{ old('description') }}</textarea>
+                            <textarea class="form-control" id="description" name="description" placeholder="Inserisci qui la Descrizione">{{ old('description') }}</textarea>
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Immagine</label>
                         <div class="col-sm-10">
-                            <input type="file"  class="form-control" id="thumb" name="thumb" required>
+                            <input type="file"  class="form-control" id="thumb" name="thumb">
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
@@ -56,7 +56,7 @@
                         <p>Seleziona le Tecnologie</p>
                         @foreach($technologies as $technology)
                             <div class="form-check form-switch form-check-inline col-2">
-                                <input class="form-check-input" name="technologies[]" type="checkbox" role="switch" id="flexSwitchCheckDefault{{ $technology->id }}" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} required>
+                                <input class="form-check-input" name="technologies[]" type="checkbox" role="switch" id="flexSwitchCheckDefault{{ $technology->id }}" value="{{ $technology->id }}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} {{-- required --}}>
                                 <label class="form-check-label" for="flexSwitchCheckDefault{{ $technology->id }}">{{ $technology->name }}</label>  
                             </div>
                         @endforeach
@@ -64,16 +64,16 @@
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Repo GitHub</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" id="github" name="github" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('github') }}" required>
+                            <input type="text"  class="form-control" id="github" name="github" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('github') }}">  {{-- no required in caso di progetti privati --}}
                         </div>
                     </div>
                     <div class="row mb-3 form-group">
                         <label class="col-sm-2 col-form-label control-label">Demo</label>
                         <div class="col-sm-10">
-                            <input type="text"  class="form-control" id="demo" name="demo" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('demo') }}" required>
+                            <input type="text"  class="form-control" id="demo" name="demo" placeholder="Esempio: https://static.dc.com/dc/... " value="{{ old('demo') }}">
                         </div>
                     </div>
-                    <div class="text-center mt-5">
+                    <div class="text-center mt-5 mb-5">
                         <button type="submit" class="btn btn-sm btn-success ">Salva</button>
                     </div>
                 </form>
