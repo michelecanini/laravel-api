@@ -1,4 +1,5 @@
 @php
+    $counter = 1;
 @endphp
 
 @extends('layouts.admin')
@@ -16,7 +17,8 @@
                 <table class="table">
                     <thead class="text-center">
                         <tr>
-                            <th>ID</th>
+                            {{-- <th>ID</th> --}}
+                            <th>N.</th>
                             <th>Nome</th>
                             <th>Slug</th>
                             <th>Strumenti</th>
@@ -25,7 +27,8 @@
                      <tbody class="text-center">
                         @foreach ($technologies as $technology)
                             <tr class="align-middle">
-                                <td>{{ $technology->id }}</td>
+                                {{-- <td>{{ $technology->id }}</td> --}}
+                                <td>{{ $counter++ }}</td>
                                 <td>{{ $technology->name }}</td>
                                 <td>{{ $technology->slug }}</td>
                                 <td width="200">
